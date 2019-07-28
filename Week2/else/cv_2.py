@@ -1,10 +1,13 @@
 # /usr/bin/python
 # -*- coding: utf-8 -*-
 
+import os
 import cv2
 import numpy as np
 
-img = cv2.imread('lenna.jpg')
+abs_path = os.path.abspath(os.path.realpath(os.path.dirname(__file__)))
+img_path = os.path.join(abs_path, 'lenna.jpg')
+img = cv2.imread(img_path)
 cv2.imshow('lenna', img)
 key = cv2.waitKey()
 if key == 27:
@@ -98,7 +101,8 @@ if key == 27:
     cv2.destroyAllWindows()
 
 ######### 角点 ###########
-img = cv2.imread('board.jpg')
+img_path_1 = os.path.join(abs_path, 'board.jpg')
+img = cv2.imread(img_path_1)
 img = cv2.resize(img, (640, 480))
 img_gray = np.float32(cv2.cvtColor(img, cv2.COLOR_BGR2GRAY))
 print(img_gray)
@@ -124,7 +128,6 @@ if key == 27:
 
 
 ########### SIFT ###########
-img = cv2.imread('lenna.jpg')
 # create sift class
 sift = cv2.xfeatures2d.SIFT_create()
 # detect SIFT
@@ -133,7 +136,7 @@ kp = sift.detect(img,None)   # None for mask
 kp,des = sift.compute(img,kp)
 print(des.shape)
 img_sift= cv2.drawKeypoints(img,kp,outImage=np.array([]), flags=cv2.DRAW_MATCHES_FLAGS_DRAW_RICH_KEYPOINTS)
-cv2.imshow('lenna_sift.jpg', img_sift)
+cv2.imshow('sift.jpg', img_sift)
 key = cv2.waitKey()
 if key == 27:
     cv2.destroyAllWindows()
