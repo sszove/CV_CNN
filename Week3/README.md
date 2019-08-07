@@ -13,9 +13,11 @@ Speeds of those rivers are different: v1, v2, ..., vn. To simplify this problem,
 
 The person’s speed is v. It’s a constant, no way to change that. And the angle of the person’s velocity to horizontal line is a1, a2, ..., an.
 
-The total time for swimming is T. And, the person must pass those rivers.
+The total time for swimming is T. And, **the person must pass those rivers.**
 
-**Your task is:**
+
+
+**task is:**
 
 Find out an equation to determine by choosing what angles (a1, a2, ..., an) the person can get maximum distance in vertical direction (That is to say, please maximize *dh* by determining *a1, a2, ...**, an*) under the total time *T*. 【You are not required to give out concrete angle numbers, a “cost function” that can bederived from is enough】
 

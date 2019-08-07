@@ -6,7 +6,7 @@ Time: 2019.08.4
 Author: ssz
 Function: Logistic Regression
 Thought:
-Key:
+Key: use whole samples
 Ref:
 """
 
