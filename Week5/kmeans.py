@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import cv2
 
+
 def assignment(df, centroids, colmap):
     for i in centroids.keys():
         # sqrt((x1 - x2)^2 - (y1 - y2)^2)

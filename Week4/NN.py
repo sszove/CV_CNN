@@ -1,17 +1,24 @@
 import numpy as np
 import sklearn.datasets
 import sklearn.linear_model
+import matplotlib.pyplot as plt
 
 # 生成数据集
 np.random.seed(0)
 X, y = sklearn.datasets.make_moons(200, noise=0.2)
 
-num_examples = len(X)       # size of training set
+plt.title('make_moons function')
+plt.scatter(X[:, 0], X[:, 1], marker='o', c=y)
+plt.show()
+
+# size of training set
+num_examples = len(X)
 nn_input_dim = 2
 nn_output_dim = 2
 
 lr = 0.01
 reg_lambda = 0.01
+
 
 def calculate_loss(model):
     W1, b1, W2, b2 = model['W1'], model['b1'], model['W2'], model['b2']
@@ -28,6 +35,7 @@ def calculate_loss(model):
 
     return 1./num_examples * loss
 
+
 def build_model(nn_hdim, num_passes=30000, print_loss=False):
     W1 = np.random.randn(nn_input_dim, nn_hdim) / np.sqrt(nn_input_dim)
     b1 = np.zeros((1, nn_hdim))
@@ -43,12 +51,17 @@ def build_model(nn_hdim, num_passes=30000, print_loss=False):
         a1 = np.tanh(z1)
         z2 = a1.dot(W2) + b2
         exp_scores = np.exp(z2)
-        probs = exp_scores / np.sum(exp_scores, axis=1, keepdims=True)   # this is softmax
+        # this is softmax
+        probs = exp_scores / np.sum(exp_scores, axis=1, keepdims=True)
 
         # bp
         delta3 = probs
-        delta3[range(num_examples), y] -= 1    # this is the derivative of softmax [no need to thoroughly understand yet]
-		                                       #                                   [we'll revisit in weeks later]
+        '''
+        this is the derivative of softmax.
+        no need to thoroughly understand yet,
+        we'll revisit in weeks later
+        '''
+        delta3[range(num_examples), y] -= 1
         dW2 = (a1.T).dot(delta3)
         db2 = np.sum(delta3, axis=0, keepdims=True)
         delta2 = delta3.dot(W2.T) * (1 - np.power(a1, 2)) # tanh derivative

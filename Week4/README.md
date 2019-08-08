@@ -2,13 +2,13 @@
 ---
 Nerual Network
 
+- chain rule
 
-
-chain rule
-
-bp
+- BP
 
 
 
 SVM
+
+- LM（Lagrange Multiplier） solve SVM
 
