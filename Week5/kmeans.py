@@ -77,7 +77,7 @@ def main():
     plt.show()
 
     for i in range(10):
-        key = cv2.waitKey()
+        #key = cv2.waitKey()
         plt.close()
 
         closest_centroids = df['closest'].copy(deep=True)
