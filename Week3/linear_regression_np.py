@@ -10,6 +10,7 @@ Ref:
 """
 
 import numpy as np
+import time
 
 
 def inference(w, b, x_list):
@@ -95,7 +96,6 @@ def run():
 
 
 if __name__ == '__main__':
-    import time
     start = time.time()
     run()
     end = time.time()
